@@ -4,12 +4,12 @@ const ctx = canvas.getContext('2d');
 
 let particles = [];
 const colors = [
-    '#3b82f6', // Bright Blue
-    '#60a5fa', // Light Blue
-    '#1d4ed8', // Dark Blue
+    '#6366f1', // Indigo
+    '#8b5cf6', // Violet
+    '#ec4899', // Pink
+    '#f43f5e', // Rose
     '#0ea5e9', // Sky Blue
-    '#06b6d4', // Cyan
-    '#2563eb'  // Royal Blue
+    '#10b981'  // Emerald
 ];
 
 // Resize canvas to cover window
@@ -90,7 +90,7 @@ class Sparkle {
     draw() {
         ctx.save();
         ctx.globalAlpha = this.alpha;
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+        ctx.fillStyle = 'rgba(99, 102, 241, 0.35)';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -167,4 +167,119 @@ card.addEventListener('click', (e) => {
     setTimeout(() => {
         heading.style.transform = '';
     }, 100);
+});
+
+// 3. 'Next Sentence' Button Click Logic
+const nextBtn = document.getElementById('nextBtn');
+const sentences = [
+    {
+        text: "오늘도 힘내세요!",
+        start: "#3b82f6", // Blue
+        end: "#1d4ed8",
+        hoverStart: "#60a5fa",
+        hoverEnd: "#2563eb",
+        glow: "rgba(37, 99, 235, 0.25)",
+        glowHover: "rgba(37, 99, 235, 0.35)",
+        textGlow: "rgba(37, 99, 235, 0.15)"
+    },
+    {
+        text: "당신의 도전을 응원합니다.",
+        start: "#10b981", // Emerald
+        end: "#047857",
+        hoverStart: "#34d399",
+        hoverEnd: "#059669",
+        glow: "rgba(16, 185, 129, 0.25)",
+        glowHover: "rgba(16, 185, 129, 0.35)",
+        textGlow: "rgba(16, 185, 129, 0.15)"
+    },
+    {
+        text: "할 수 있어요, 천천히 가도 괜찮아요.",
+        start: "#8b5cf6", // Violet
+        end: "#5b21b6",
+        hoverStart: "#a78bfa",
+        hoverEnd: "#7c3aed",
+        glow: "rgba(139, 92, 246, 0.25)",
+        glowHover: "rgba(139, 92, 246, 0.35)",
+        textGlow: "rgba(139, 92, 246, 0.15)"
+    },
+    {
+        text: "오늘 하루도 멋지게 만들어봐요.",
+        start: "#f97316", // Orange
+        end: "#c2410c",
+        hoverStart: "#fb923c",
+        hoverEnd: "#ea580c",
+        glow: "rgba(249, 115, 22, 0.25)",
+        glowHover: "rgba(249, 115, 22, 0.35)",
+        textGlow: "rgba(249, 115, 22, 0.15)"
+    },
+    {
+        text: "가장 빛나는 별은 아직 뜨지 않았어요.",
+        start: "#f43f5e", // Rose
+        end: "#be123c",
+        hoverStart: "#fb7185",
+        hoverEnd: "#e11d48",
+        glow: "rgba(244, 63, 94, 0.25)",
+        glowHover: "rgba(244, 63, 94, 0.35)",
+        textGlow: "rgba(244, 63, 94, 0.15)"
+    },
+    {
+        text: "당신의 아이디어는 위대합니다.",
+        start: "#6366f1", // Indigo
+        end: "#3730a3",
+        hoverStart: "#818cf8",
+        hoverEnd: "#4f46e5",
+        glow: "rgba(99, 102, 241, 0.25)",
+        glowHover: "rgba(99, 102, 241, 0.35)",
+        textGlow: "rgba(99, 102, 241, 0.15)"
+    }
+];
+let currentSentenceIndex = 0;
+
+// Function to update the page theme colors dynamically
+function updateTheme(theme) {
+    const root = document.documentElement;
+    root.style.setProperty('--theme-color-start', theme.start);
+    root.style.setProperty('--theme-color-end', theme.end);
+    root.style.setProperty('--theme-hover-start', theme.hoverStart);
+    root.style.setProperty('--theme-hover-end', theme.hoverEnd);
+    root.style.setProperty('--theme-glow', theme.glow);
+    root.style.setProperty('--theme-glow-hover', theme.glowHover);
+    root.style.setProperty('--theme-text-glow', theme.textGlow);
+}
+
+// Initial theme update for first sentence
+updateTheme(sentences[0]);
+
+nextBtn.addEventListener('click', (e) => {
+    // Prevent triggering parent card click event (avoids double explosion)
+    e.stopPropagation();
+    
+    currentSentenceIndex = (currentSentenceIndex + 1) % sentences.length;
+    const currentTheme = sentences[currentSentenceIndex];
+    const heading = document.getElementById('mainHeading');
+    
+    // Text scale & opacity change transition
+    heading.style.transform = 'scale(0.9)';
+    heading.style.opacity = '0';
+    heading.style.transition = 'transform 0.15s ease, opacity 0.15s ease';
+    
+    setTimeout(() => {
+        heading.textContent = currentTheme.text;
+        
+        // Update variables before showing the text so the color transitions smoothly
+        updateTheme(currentTheme);
+        
+        heading.style.transform = 'scale(1)';
+        heading.style.opacity = '1';
+    }, 150);
+    
+    // Generate celebration particles at button center
+    const rect = nextBtn.getBoundingClientRect();
+    const btnCenterX = rect.left + rect.width / 2;
+    const btnCenterY = rect.top + rect.height / 2;
+    
+    const count = 30;
+    for (let i = 0; i < count; i++) {
+        particles.push(new Particle(btnCenterX, btnCenterY));
+    }
 });
