@@ -174,63 +174,63 @@ const nextBtn = document.getElementById('nextBtn');
 const sentences = [
     {
         text: "오늘도 힘내세요!",
-        start: "#3b82f6", // Blue
-        end: "#1d4ed8",
-        hoverStart: "#60a5fa",
-        hoverEnd: "#2563eb",
-        glow: "rgba(37, 99, 235, 0.25)",
-        glowHover: "rgba(37, 99, 235, 0.35)",
-        textGlow: "rgba(37, 99, 235, 0.15)"
-    },
-    {
-        text: "당신의 도전을 응원합니다.",
-        start: "#10b981", // Emerald
-        end: "#047857",
-        hoverStart: "#34d399",
-        hoverEnd: "#059669",
+        start: "#a7f3d0", // Light Green / Emerald 200
+        end: "#10b981", // Emerald 500
+        hoverStart: "#064e3b", // Dark Green / Emerald 900
+        hoverEnd: "#022c22", // Emerald 950
         glow: "rgba(16, 185, 129, 0.25)",
-        glowHover: "rgba(16, 185, 129, 0.35)",
+        glowHover: "rgba(6, 78, 59, 0.35)",
         textGlow: "rgba(16, 185, 129, 0.15)"
     },
     {
+        text: "당신의 도전을 응원합니다.",
+        start: "#86efac", // Light Green / Green 300
+        end: "#22c55e", // Green 500
+        hoverStart: "#14532d", // Dark Green / Green 900
+        hoverEnd: "#052e16", // Green 950
+        glow: "rgba(34, 197, 94, 0.25)",
+        glowHover: "rgba(20, 83, 45, 0.35)",
+        textGlow: "rgba(34, 197, 94, 0.15)"
+    },
+    {
         text: "할 수 있어요, 천천히 가도 괜찮아요.",
-        start: "#8b5cf6", // Violet
-        end: "#5b21b6",
-        hoverStart: "#a78bfa",
-        hoverEnd: "#7c3aed",
-        glow: "rgba(139, 92, 246, 0.25)",
-        glowHover: "rgba(139, 92, 246, 0.35)",
-        textGlow: "rgba(139, 92, 246, 0.15)"
+        start: "#67e8f9", // Light Mint/Cyan
+        end: "#0d9488", // Teal 600
+        hoverStart: "#115e59", // Dark Teal 800
+        hoverEnd: "#0f766e", // Teal 700
+        glow: "rgba(13, 148, 136, 0.25)",
+        glowHover: "rgba(17, 94, 89, 0.35)",
+        textGlow: "rgba(13, 148, 136, 0.15)"
     },
     {
         text: "오늘 하루도 멋지게 만들어봐요.",
-        start: "#f97316", // Orange
-        end: "#c2410c",
-        hoverStart: "#fb923c",
-        hoverEnd: "#ea580c",
-        glow: "rgba(249, 115, 22, 0.25)",
-        glowHover: "rgba(249, 115, 22, 0.35)",
-        textGlow: "rgba(249, 115, 22, 0.15)"
+        start: "#bef264", // Lime 300
+        end: "#84cc16", // Lime 500
+        hoverStart: "#3f6212", // Dark Lime 800
+        hoverEnd: "#1a2e05", // Lime 950
+        glow: "rgba(132, 204, 22, 0.25)",
+        glowHover: "rgba(63, 98, 18, 0.35)",
+        textGlow: "rgba(132, 204, 22, 0.15)"
     },
     {
         text: "가장 빛나는 별은 아직 뜨지 않았어요.",
-        start: "#f43f5e", // Rose
-        end: "#be123c",
-        hoverStart: "#fb7185",
-        hoverEnd: "#e11d48",
-        glow: "rgba(244, 63, 94, 0.25)",
-        glowHover: "rgba(244, 63, 94, 0.35)",
-        textGlow: "rgba(244, 63, 94, 0.15)"
+        start: "#a7f3d0", // Emerald 200
+        end: "#059669", // Emerald 600
+        hoverStart: "#064e3b", // Emerald 900
+        hoverEnd: "#022c22", // Emerald 950
+        glow: "rgba(5, 150, 105, 0.25)",
+        glowHover: "rgba(6, 78, 59, 0.35)",
+        textGlow: "rgba(5, 150, 105, 0.15)"
     },
     {
         text: "당신의 아이디어는 위대합니다.",
-        start: "#6366f1", // Indigo
-        end: "#3730a3",
-        hoverStart: "#818cf8",
-        hoverEnd: "#4f46e5",
-        glow: "rgba(99, 102, 241, 0.25)",
-        glowHover: "rgba(99, 102, 241, 0.35)",
-        textGlow: "rgba(99, 102, 241, 0.15)"
+        start: "#34d399", // Emerald 400
+        end: "#047857", // Emerald 700
+        hoverStart: "#0f172a", // Dark Slate 900
+        hoverEnd: "#1e293b", // Slate 800
+        glow: "rgba(52, 211, 153, 0.25)",
+        glowHover: "rgba(15, 23, 42, 0.35)",
+        textGlow: "rgba(52, 211, 153, 0.15)"
     }
 ];
 let currentSentenceIndex = 0;
@@ -283,3 +283,5 @@ nextBtn.addEventListener('click', (e) => {
         particles.push(new Particle(btnCenterX, btnCenterY));
     }
 });
+
+
